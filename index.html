@@ -1,0 +1,497 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HappyPaws Kennel – AKC Toy Poodles in Sacramento</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f8f5f1;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ffb347, #ffcc66);
+      color: #fff;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+    }
+
+    nav a {
+      margin-left: 16px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      background: #ffffff;
+    }
+
+    .hero-text {
+      flex: 1 1 320px;
+      max-width: 520px;
+      padding: 20px;
+    }
+
+    .hero-text h2 {
+      font-size: 2.3rem;
+      margin-bottom: 10px;
+      color: #1f2933;
+    }
+
+    .hero-text p {
+      margin-bottom: 18px;
+      color: #4b5563;
+    }
+
+    .hero-badges {
+      margin-bottom: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .badge {
+      background: #e0f2fe;
+      color: #1d4ed8;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .hero-text button {
+      border: none;
+      background: #ffb347;
+      color: #222;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s;
+    }
+
+    .hero-text button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      background: #ffd27f;
+    }
+
+    .hero-image {
+      flex: 1 1 280px;
+      max-width: 420px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .hero-illustration {
+      width: 100%;
+      max-width: 320px;
+      height: 220px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #e0f2fe, #fef3c7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      margin: 0 auto;
+    }
+
+    .hero-caption {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .section {
+      padding: 40px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section h3 {
+      font-size: 1.9rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #1f2933;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #6b7280;
+      margin-bottom: 24px;
+    }
+
+    .dogs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .dog-card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dog-photo {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .dog-info {
+      padding: 16px 18px 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .dog-info h4 {
+      margin-bottom: 4px;
+      font-size: 1.1rem;
+      color: #111827;
+    }
+
+    .dog-meta {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 6px;
+    }
+
+    .dog-akc {
+      font-size: 0.85rem;
+      color: #1d4ed8;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .dog-location {
+      font-size: 0.85rem;
+      color: #047857;
+      margin-bottom: 8px;
+    }
+
+    .dog-price {
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #ea580c;
+    }
+
+    .dog-info button {
+      align-self: flex-start;
+      border: none;
+      background: #06d6a0;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .dog-info button:hover {
+      background: #059669;
+      transform: translateY(-1px);
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .testimonial {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 18px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    .testimonial strong {
+      display: block;
+      margin-top: 10px;
+      color: #111827;
+    }
+
+    .contact-form {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-form p {
+      font-size: 0.9rem;
+      color: #4b5563;
+      margin-bottom: 14px;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 8px 10px;
+      margin-bottom: 14px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      font-size: 0.95rem;
+      font-family: inherit;
+      background: #f9fafb;
+    }
+
+    .contact-form button {
+      border: none;
+      background: #ffb347;
+      color: #222;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .contact-form button:hover {
+      background: #ffd27f;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HappyPaws Kennel</h1>
+    <nav>
+      <a href="#dogs">Toy Poodles</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>AKC Toy Poodles in Sacramento</h2>
+      <p>
+        HappyPaws Kennel specializes in ethically raised, AKC-registered Toy Poodle puppies
+        in Sacramento, California. Our pups are raised in a loving home, health-checked,
+        vaccinated, and ready to join your family.
+      </p>
+      <div class="hero-badges">
+        <span class="badge">AKC Registered</span>
+        <span class="badge">Sacramento, CA</span>
+        <span class="badge">Health Checked</span>
+        <span class="badge">Family-Raised</span>
+      </div>
+      <button onclick="scrollToDogs()">View Available Puppies</button>
+    </div>
+    <div class="hero-image">
+      <div class="hero-illustration">
+        🐩
+      </div>
+      <p class="hero-caption">
+        Happy, healthy Toy Poodles waiting for their forever homes in Sacramento.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="dogs">
+    <h3>Available Toy Poodles</h3>
+    <p class="section-subtitle">
+      All puppies are AKC registered, vet-checked, vaccinated, and raised with care in Sacramento, CA.
+    </p>
+    <div class="dogs-grid">
+      <!-- Dog 1 -->
+      <div class="dog-card">
+        <div class="dog-photo" style="background-image:url('https://via.placeholder.com/400x250?text=Apricot+Toy+Poodle');"></div>
+        <div class="dog-info">
+          <div>
+            <h4>Bella</h4>
+            <div class="dog-meta">Female • 10 weeks • Apricot</div>
+            <div class="dog-akc">AKC Registered • Health Certificate Included</div>
+            <div class="dog-location">Located in Sacramento, CA</div>
+            <div class="dog-price">$2,200</div>
+          </div>
+          <button onclick="inquire('Bella')">Adopt / Buy Now</button>
+        </div>
+      </div>
+
+      <!-- Dog 2 -->
+      <div class="dog-card">
+        <div class="dog-photo" style="background-image:url('https://via.placeholder.com/400x250?text=White+Toy+Poodle');"></div>
+        <div class="dog-info">
+          <div>
+            <h4>Milo</h4>
+            <div class="dog-meta">Male • 12 weeks • White</div>
+            <div class="dog-akc">AKC Registered • First Vaccines Complete</div>
+            <div class="dog-location">Pickup in Sacramento, CA</div>
+            <div class="dog-price">$2,000</div>
+          </div>
+          <button onclick="inquire('Milo')">Adopt / Buy Now</button>
+        </div>
+      </div>
+
+      <!-- Dog 3 -->
+      <div class="dog-card">
+        <div class="dog-photo" style="background-image:url('https://via.placeholder.com/400x250?text=Red+Toy+Poodle');"></div>
+        <div class="dog-info">
+          <div>
+            <h4>Luna</h4>
+            <div class="dog-meta">Female • 9 weeks • Red</div>
+            <div class="dog-akc">AKC Registered • Microchipped</div>
+            <div class="dog-location">Sacramento, CA • Local families preferred</div>
+            <div class="dog-price">$2,400</div>
+          </div>
+          <button onclick="inquire('Luna')">Adopt / Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="testimonials">
+    <h3>Happy Sacramento Families</h3>
+    <p class="section-subtitle">
+      A few words from families who welcomed a HappyPaws Toy Poodle into their homes.
+    </p>
+    <div class="testimonials">
+      <div class="testimonial">
+        “We picked up our Toy Poodle from HappyPaws right here in Sacramento, and the experience
+        was wonderful. Our vet was impressed with her health and temperament. You can tell
+        these puppies are truly loved.”
+        <strong>— Maria &amp; David, East Sacramento</strong>
+      </div>
+      <div class="testimonial">
+        “Our kids adore Milo. He came AKC registered, vaccinated, and very well socialized.
+        The breeder was transparent, kind, and answered all our questions.”
+        <strong>— The Johnson Family, Elk Grove</strong>
+      </div>
+      <div class="testimonial">
+        “Professional, ethical, and caring. We visited the home in Sacramento and saw how
+        the puppies were raised. Luna has been the perfect companion.”
+        <strong>— Alex &amp; Priya, Natomas</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <h3>Contact HappyPaws Kennel</h3>
+    <div class="contact-form">
+      <p>
+        Interested in one of our AKC Toy Poodles in Sacramento? Send us a message and tell us
+        a bit about your home and what you’re looking for. We’ll get back to you as soon as possible.
+      </p>
+      <form onsubmit="handleSubmit(event)">
+        <label for="name">Your Name</label>
+        <input id="name" name="name" type="text" required />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required />
+
+        <label for="phone">Phone (optional)</label>
+        <input id="phone" name="phone" type="tel" placeholder="e.g., (916) 555‑1234" />
+
+        <label for="dog">Puppy You’re Interested In</label>
+        <input id="dog" name="dog" type="text" placeholder="e.g., Bella, Milo, Luna" />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4"
+          placeholder="Tell us about your family, home, and what you’re hoping for in a Toy Poodle."
+          required></textarea>
+
+        <button type="submit">Send Inquiry</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> HappyPaws Kennel · AKC Toy Poodles · Sacramento, California
+  </footer>
+
+  <script>
+    function scrollToDogs() {
+      document.getElementById("dogs").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function inquire(dogName) {
+      const dogInput = document.getElementById("dog");
+      dogInput.value = dogName;
+      document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      alert("Thank you! Your inquiry has been received. We will contact you soon.");
+      event.target.reset();
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+```
